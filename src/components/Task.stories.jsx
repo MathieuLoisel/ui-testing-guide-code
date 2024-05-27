@@ -1,3 +1,4 @@
+
 import Task from './Task';
 
 export default {
@@ -11,6 +12,12 @@ export default {
 	},
 };
 
+
+/*
+*👇 Wraps the component with a custom render function.
+* See https://storybook.js.org/docs/react/api/csf
+* to learn how to use render functions.
+*/
 export const Default = {
 	render: (args) => (
 		<ul>
