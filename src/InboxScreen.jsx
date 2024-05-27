@@ -8,6 +8,9 @@ export default function InboxScreen({ error }) {
   const archiveTask = (archive, id) => {
     dispatch({ type: archive ? "ARCHIVE_TASK" : "INBOX_TASK", id });
   };
+  const deleteTask = (id) => {
+    dispatch({ type: "DELETE_TASK", id });
+  };
 
   const togglePinTask = (state, id) => {
     dispatch({
@@ -22,27 +25,28 @@ export default function InboxScreen({ error }) {
 
   if (error) {
     return (
-      <div className="page lists-show">
-        <div className="wrapper-message">
-          <span className="icon-face-sad" />
-          <p className="title-message">Oh no!</p>
-          <p className="subtitle-message">Something went wrong</p>
+        <div className="page lists-show">
+          <div className="wrapper-message">
+            <span className="icon-face-sad" />
+            <p className="title-message">Oh no!</p>
+            <p className="subtitle-message">Something went wrong</p>
+          </div>
         </div>
-      </div>
     );
   }
   return (
-    <div className="page lists-show">
-      <nav>
-        <h1 className="title-page">Taskbox</h1>
-      </nav>
-      <TaskList
-        tasks={tasks}
-        onArchiveTask={archiveTask}
-        onTogglePinTask={togglePinTask}
-        onEditTitle={editTitle}
-      />
-    </div>
+      <div className="page lists-show">
+        <nav>
+          <h1 className="title-page">Taskbox</h1>
+        </nav>
+        <TaskList
+            tasks={tasks}
+            onArchiveTask={archiveTask}
+            onTogglePinTask={togglePinTask}
+            onEditTitle={editTitle}
+            onDeleteTask={deleteTask}
+        />
+      </div>
   );
 }
 InboxScreen.propTypes = {
